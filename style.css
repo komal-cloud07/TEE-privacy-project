@@ -1,65 +1,33 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizeing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 body {
-           font-family: Arial, sans-serif if;
-           background-color: #f4f6f8;
-          color: #222;
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f8;
+  color: #222;
+  line-height: 1.6;
 }
 header {
-          background-color: #222;
-          color white;
-          text-align: center;
-         padding: 40px 20px;
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
 }
 header h1 {
-        font-size: 40px;
-       margin-bottom: 10px;
+  font-size: 40px;
+  margin-bottom: 10px;
 }
 header p {
-       font-size: 18px;
+  font-size: 18px;
 }
 main {
-      width: 80%;
-      margin: 30px auto;
+  width: 80%;
+  max-width: 800px;
+  margin: 30px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
-section { 
-     background-color: white;
-     padding: 25px;
-     margin-bottom: 20px;
-     border-radus: 10px;
-}
-h2 {
-      margin-bottom: 15px;
-}
-p {
-    line-height: 1.6;
-}
-ul {
-    margin-left: 20px;
-    line-height: 2;
-}
-input {
-   width: 70%;
-   padding: 12px;
-   margin-top: 10px;
-   border: 1px soild #ccc;
-   border-radius: 5px;
-}
-button {
-   padding:12px 20px;
-   margin-left: 5px;
-   border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-footer {
-   background-color: #22;
-   color: white;
-   text-align: center;
-   padding: 20px;
-   margin-top: 30px;
-}
-
