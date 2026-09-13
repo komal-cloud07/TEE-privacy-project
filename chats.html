@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>My Chats - Private AI</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav style="background:black; color:white; padding:12px;">
+  <b>Private AI</b> | 
+  <a href="index.html" style="color:white;">Home</a> | 
+  <a href="dashboard.html" style="color:white;">Dashboard</a> | 
+  <a href="chats.html" style="color:white;">My Chats</a>
+</nav>
+
+<h2 style="text-align:center;">Secure Chat Manager</h2>
+<div style="text-align:center; margin:20px;">
+  <input type="text" id="q" placeholder="Ask Private AI..." style="width:60%; padding:8px;">
+  <button onclick="save()" style="padding:8px 15px;">Save</button>
+</div>
+
+<div id="list" style="margin:20px;"></div>
+
+<script>
+function save(){
+  let val = document.getElementById('q').value;
+  if(val=="") return;
+  localStorage.setItem(Date.now(), val);
+  document.getElementById('q').value="";
+  show();
+}
+function show(){
+  let l = document.getElementById('list');
+  l.innerHTML = "<table border='1' width='100%'><tr><th>Chat</th><th>Action</th></tr>";
+  for(let i=0; i<localStorage.length; i++){
+    let k = localStorage.key(i);
+    let v = localStorage.getItem(k);
+    l.innerHTML += "<tr><td>"+v+"</td><td><button onclick=\"localStorage.removeItem('"+k+"');show()\">Delete</button></td></tr>";
+  }
+  l.innerHTML += "</table>";
+}
+show();
+</script>
+
+</body>
+</html>
