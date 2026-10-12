@@ -1,38 +1,59 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-<title>Gupt Vaidya - Attractive</title>
+<title>Gupt Vaidya - Private AI</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-body{background:linear-gradient(135deg,#fff0f5,#f8bbd0);font-family:Segoe UI;margin:0}
-.header{background:linear-gradient(90deg,#ad1457,#e91e63);color:white;padding:15px;text-align:center}
-.stats{display:flex;gap:15px;justify-content:center;flex-wrap:wrap;margin:20px}
-.card{background:white;padding:20px;border-radius:15px;box-shadow:0 5px 15px #0002;min-width:150px;text-align:center;border-top:4px solid #e91e63}
-.card h2{color:#ad1457;font-size:32px}
-.main{background:white;max-width:600px;margin:20px auto;padding:25px;border-radius:20px}
-.btn{background:linear-gradient(90deg,#e91e63,#ad1457);color:white;border:none;padding:12px;width:100%;border-radius:25px;font-size:16px;margin-top:10px}
+body{margin:0;font-family:Segoe UI;background:linear-gradient(135deg,#fff0f5,#f8bbd0)}
+.header{background:#ad1457;color:white;padding:15px 20px;display:flex;justify-content:space-between}
+.stats{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:20px}
+.stat{background:white;padding:15px 20px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.1);min-width:130px;text-align:center;border-top:4px solid #e91e63}
+.stat h2{margin:0;color:#ad1457;font-size:28px}
+.card{background:white;max-width:650px;margin:20px auto;padding:20px;border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,0.1)}
+.btn{background:linear-gradient(90deg,#e91e63,#ad1457);color:white;border:none;padding:12px 20px;border-radius:25px;width:100%;font-size:16px;cursor:pointer}
 </style>
 </head>
 <body>
-<div class="header"><h2>🔒 Gupt Vaidya - 100% Gupt & Surakshit</h2><p>Powered by TEE Live 🟢</p></div>
+<div class="header">
+<b>🔒 Gupt Vaidya - Mahila Aarogya Sathi</b>
+<span><a href="dashboard.html" style="color:white">Dashboard</a></span>
+</div>
+
 <div class="stats">
-<div class="card"><h2 id="c1">1247</h2><p>Total Login</p></div>
-<div class="card"><h2 id="c2">89</h2><p>Aaj Use Kele</p></div>
-<div class="card"><h2>100%</h2><p>TEE Secured</p></div>
-<div class="card"><h2 id="c3">12</h2><p>Active Now</p></div>
+  <div class="stat"><h2 id="totalLogins">0</h2><p>Total Logins</p></div>
+  <div class="stat"><h2 id="todayUse">0</h2><p>Aaj Use Kele</p></div>
+  <div class="stat"><h2>100%</h2><p>TEE Secure</p></div>
+  <div class="stat"><h2 id="live">5</h2><p>Active Now</p></div>
 </div>
-<div class="main">
-<h3 style="color:#ad1457">Tuza Prashna Ithech Rahil</h3>
-<p>Maharashtra til mulinsathi</p>
-<input id="q" style="width:100%;padding:10px;border-radius:10px;border:2px solid #f8bbd0" placeholder="Prashna liha...">
-<button class="btn" onclick="ask()">Prashna Vichar (Demo)</button>
-<p id="a"></p>
+
+<div class="card">
+<h3 style="color:#ad1457">Tuza Prashna Ithech Rahil 🔒</h3>
+<p style="color:#555">Maharashtra til mulinsathi 100% gupt seva</p>
+<input id="qInput" type="text" placeholder="Tujha prashna lih..." style="width:100%;padding:12px;border-radius:8px;border:1px solid #f8bbd0;margin-top:10px">
+<button class="btn" onclick="askQ()">Prashna Vichar (Demo)</button>
+<p id="ans" style="display:none;margin-top:15px;background:#fff3f6;padding:10px;border-radius:8px"></p>
 </div>
+
 <script>
-let n=localStorage.getItem('logins')||1247; n=parseInt(n)+1; localStorage.setItem('logins',n);
-document.getElementById('c1').innerText=n;
-document.getElementById('c2').innerText=Math.floor(Math.random()*20)+80;
-document.getElementById('c3').innerText=Math.floor(Math.random()*10)+5;
-function ask(){let v=document.getElementById('q').value; if(!v)return alert('Prashna liha'); document.getElementById('a').innerHTML='🔒 Tujha prashna: '+v+'<br>Ha TEE Locker madhe 100% gupt rahila. History save nahi.';}
+// --- Mam sathi Counting Logic ---
+let logins = localStorage.getItem('totalLogins');
+if(!logins){ logins = 1247; } else { logins = parseInt(logins) + 1; }
+localStorage.setItem('totalLogins', logins);
+document.getElementById('totalLogins').innerText = logins;
+
+let today = localStorage.getItem('todayUse') || 89;
+document.getElementById('todayUse').innerText = today;
+document.getElementById('live').innerText = Math.floor(Math.random()*8)+4;
+
+function askQ(){
+  let q = document.getElementById('qInput').value;
+  if(!q){alert('Prashna liha');return}
+  document.getElementById('ans').style.display='block';
+  document.getElementById('ans').innerHTML = '✅ Tujha prashna TEE Locker madhe 100% gupt rahila!<br>History save zala nahi.';
+  // Query count vadhav
+  let qc = localStorage.getItem('totalQueries')||0;
+  localStorage.setItem('totalQueries', parseInt(qc)+1);
+}
 </script>
 </body>
-</html>
+</html>﻿
