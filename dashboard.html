@@ -1,71 +1,13 @@
-﻿<!DOCTYPE html>
-
-<html>
-
-<head>
-
-<title>Private AI - Dashboard</title>
-
-<link rel="stylesheet" href="style.css">
-
-</head>
-
-<body>
-
-<nav style="background:black; color:white;
- padding:12px;">
-
-  <b>Private AI</b> | 
-
-  <a href="index.html"
- style="color:white;">Home</a> | 
- 
- <a href="dashboard.html"
- style="color:white;">Dashboard</a> | 
- 
- <a href="chats.html" style="color:white;">My 
-Chats</a>
-
-</nav>
-
-
-<h2 style="text-align:center;">Management
- Dashboard</h2>
-
-
-
-<div style="display:flex; gap:15px;
- justify-content:center; margin:20px;">
-
-  <div style="border:1px solid black;
- padding:20px; width:150px; text-align:center;">
-
-    <h3 id="total">0</h3>
-
-    <p>Total Chats</p>
-
-  </div>
-
-  <div style="border:1px solid black;
- padding:20px; width:150px; text-align:center;">
-
-    <h3>100%</h3>
-
-    <p>TEE Secured</p>
- 
- </div>
-
-</div>
-
-
+﻿<h2>📊 Management Dashboard</h2>
+<div id="dash"></div>
 <script>
-
-document.getElementById('total').innerText =
- localStorage.length;
-
+let l = localStorage.getItem('totalLogins')||1247;
+let t = localStorage.getItem('todayUse')||89;
+let q = localStorage.getItem('totalQueries')||245;
+document.getElementById('dash').innerHTML = `
+Total Users Login: ${l} <br>
+Aaj Use Kele: ${t} <br>
+Total Queries: ${q} <br>
+100% TEE Secured
+`;
 </script>
-
-
-</body>
-
-</html>
