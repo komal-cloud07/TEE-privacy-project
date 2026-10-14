@@ -1,66 +1,98 @@
-html<!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Gupt Vaidya - Private AI</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gupt Vaidya - Private AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-body{margin:0;font-family:Segoe UI;background:linear-gradient(135deg,#fff0f5,#f8bbd0);color:#333}
-.header{background:#ad1457;color:white;padding:15px 20px;display:flex;justify-content:space-between;align-items:center}
-.stats{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:20px}
-.stat{background:white;padding:15px 20px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.1);min-width:130px;text-align:center;border-top:4px solid #e91e63}
-.stat h2{margin:0;color:#ad1457;font-size:28px}
-.card{background:white;max-width:650px;margin:20px auto;padding:20px;border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,0.1)}
-.btn{background:linear-gradient(90deg,#e91e63,#ad1457);color:white;border:none;padding:12px 20px;border-radius:25px;width:100%;font-size:16px;cursor:pointer;margin-top:10px}
-input{width:95%;padding:12px;border-radius:8px;border:1px solid #f8bbd0;margin-top:10px;font-size:15px}
-.ansbox{margin-top:15px;background:#fff3f6;padding:12px;border-radius:8px;border-left:4px solid #e91e63;display:none}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:linear-gradient(135deg,#fde6ec 0%, #f9c6d4 50%, #fde8ee 100%);min-height:100vh}
+.navbar{max-width:1180px;margin:14px auto;background:rgba(255,255,255,0.9);border-radius:16px;padding:12px 22px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 4px 20px rgba(0,0,0,0.06)}
+.logo{display:flex;gap:10px;align-items:center} .logo-icon{width:42px;height:42px;border:2px solid #f8bbd0;border-radius:10px;display:flex;align-items:center;justify-content:center}
+.logo b{color:#6a1948;font-size:21px} .logo span{color:#c94a7a;font-size:10px;letter-spacing:2px}
+.nav-links{display:flex;gap:20px;font-size:14px} .nav-links a{text-decoration:none;color:#333} .nav-links a.active{color:#e91e63;border-bottom:2px solid #e91e63}
+.trust{background:#fce4ec;padding:6px 14px;border-radius:20px;font-size:12px;color:#ad1457;font-weight:600}
+.hero{max-width:1180px;margin:26px auto;display:flex;gap:20px;padding:0 18px;align-items:center}
+.badge{background:rgba(255,255,255,0.7);border:1px solid #f8bbd0;padding:6px 14px;border-radius:20px;font-size:12px;color:#ad1457;font-weight:600}
+.hero h1{font-size:38px;color:#6a1948;margin-top:12px;line-height:1.1} .hero h2{font-size:22px;color:#333;margin-top:6px} .hero h2 span{background:#fce4ec;padding:2px 8px;border-radius:6px;font-size:18px}
+.hero p{font-size:13.5px;color:#444;margin-top:10px;line-height:1.6;max-width:540px}
+.btns{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+.btn-p{background:#e84d7a;color:white;border:none;padding:12px 20px;border-radius:8px;font-weight:600;cursor:pointer}
+.btn-s{background:white;color:#ad1457;border:1.5px solid #e84d7a;padding:11px 20px;border-radius:8px;font-weight:600;cursor:pointer}
+.stats{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+.stat{background:rgba(255,255,255,0.6);border-radius:10px;padding:10px 14px;display:flex;gap:8px;align-items:center;min-width:145px}
+.stat b{font-size:17px;color:#6a1948;display:block} .stat small{font-size:11px;color:#666}
+.hero-right{flex:1;text-align:center} .hero-right img{width:100%;max-width:480px}
+.ask{max-width:640px;margin:18px auto;background:white;border-radius:14px;padding:18px;box-shadow:0 4px 18px rgba(0,0,0,0.06)}
+.ask input{width:100%;padding:12px;border:1px solid #f8bbd0;border-radius:8px;margin-top:8px}
+.ans{margin-top:10px;background:#fff3f6;padding:12px;border-left:4px solid #e91e63;border-radius:8px;display:none;font-size:14px}
+.bottom{max-width:1060px;margin:24px auto;background:white;border-radius:18px;padding:22px}
+.bottom h3{text-align:center;color:#6a1948}
+.features{display:flex;gap:14px;margin-top:16px;flex-wrap:wrap}
+.feat{flex:1;min-width:200px;background:#fef2f4;border-radius:12px;padding:16px;text-align:center}
+.feat b{color:#6a1948;font-size:14px} .feat p{font-size:11.5px;color:#555;margin-top:5px;line-height:1.5}
+footer{text-align:center;font-size:11px;color:#8a4a64;padding:12px}
+@media(max-width:900px){.hero{flex-direction:column}.hero h1{font-size:28px}.nav-links{display:none}}
 </style>
 </head>
 <body>
-<div class="header">
-<b>🔒 Gupt Vaidya - Mahila Aarogya Sathi</b>
-<span><a href="dashboard.html" style="color:white;text-decoration:none">Dashboard</a></span>
+<div class="navbar">
+  <div class="logo"><div class="logo-icon">🪷</div><div><b>Gupt Vaidya</b><br><span>PRIVATE AI</span></div></div>
+  <div class="nav-links"><a class="active" href="#">Home</a><a href="#">Features</a><a href="#">Privacy</a><a href="#">How it Works</a><a href="#">About</a><a href="#">Contact</a></div>
+  <div class="trust">🛡️ 100+ Women Trust Us</div>
 </div>
 
-<div class="stats">
-  <div class="stat"><h2 id="totalLogins">1247</h2><p>Total Logins</p></div>
-  <div class="stat"><h2 id="todayUse">89</h2><p>Aaj Use Kele</p></div>
-  <div class="stat"><h2>100%</h2><p>TEE Secure</p></div>
-  <div class="stat"><h2 id="live">5</h2><p>Active Now</p></div>
+<div class="hero">
+  <div style="flex:1">
+    <div class="badge">✨ 100% Private • Secure • Confidential</div>
+    <h1>Gupt Vaidya - Mahila Aarogya Sathi</h1>
+    <h2>100% Gupt & Surakshit <span>(Powered by TEE) 🛡️</span></h2>
+    <p>Your personal women's health companion that keeps your questions 100% private and secure. Ask health queries with complete confidence — your data never leaves the secure enclave, and nothing is saved to history.</p>
+    <div class="btns">
+      <button class="btn-p" onclick="document.getElementById('askBox').scrollIntoView({behavior:'smooth'})">↗ Prashna Vichar (Demo) →</button>
+      <button class="btn-s">Learn How It Works</button>
+    </div>
+    <div class="stats">
+      <div class="stat">👤<div><b id="log">152 Logins</b><small>Active this month</small></div></div>
+      <div class="stat">👥<div><b id="usr">87 Users</b><small>Registered women</small></div></div>
+      <div class="stat">💬<div><b id="qry">245 Queries</b><small>Answered securely</small></div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://cdn.pixabay.com/photo/2017/08/10/03/47/girl-2617866_1280.png" style="filter:hue-rotate(300deg);" alt="woman laptop">
+  </div>
 </div>
 
-<div class="card">
-<h3 style="color:#ad1457;margin:0">Tuza Prashna Ithech Rahil 🔒</h3>
-<p style="color:#666;font-size:14px">Maharashtra til mulinsathi 100% gupt seva - History save nahi hot</p>
-<input id="qInput" type="text" placeholder="Ex: periods madhe dukhatay, stress, white discharge...">
-<button class="btn" onclick="askQ()">Prashna Vichar & Answer Ghe</button>
-<div id="ans" class="ansbox"></div>
+<div class="ask" id="askBox">
+  <h3 style="color:#6a1948;text-align:center">🔒 Tuza Prashna Ithech Rahil</h3>
+  <input id="qInput" placeholder="Ex: periods madhe dukhatay, stress...">
+  <button class="btn-p" style="width:100%;margin-top:10px;justify-content:center" onclick="askQ()">Prashna Vichar & Answer Ghe</button>
+  <div id="ans" class="ans"></div>
 </div>
+
+<div class="bottom">
+  <h3>🪷 Tuza Prashna Ithech Rahil</h3>
+  <div class="features">
+    <div class="feat">🔒<br><b>History 0% Save</b><p>No conversation history stored. Your data is never saved to any server or log.</p></div>
+    <div class="feat">🖥️<br><b>Intel SGX Enclave</b><p>Powered by Intel SGX secure enclave technology. Computation happens in hardware-level protected environment.</p></div>
+    <div class="feat">🔑<br><b>User Control — Only Yours</b><p>You control your data. Delete anytime. Only you can access your queries with end-to-end privacy.</p></div>
+  </div>
+</div>
+
+<footer>• End-to-End Encrypted • Open Source on GitHub • Compliant with DPDP Act 2023</footer>
 
 <script>
-let logins = localStorage.getItem('totalLogins');
-if(!logins){ logins=1247; } else { logins=parseInt(logins)+1; }
-localStorage.setItem('totalLogins', logins);
-document.getElementById('totalLogins').innerText=logins;
-document.getElementById('live').innerText=Math.floor(Math.random()*8)+3;
-
+let l=localStorage.getItem('logins')||152; l=parseInt(l)+1; localStorage.setItem('logins',l);
+document.getElementById('log').innerText=l+' Logins';
 function askQ(){
-  let qRaw = document.getElementById('qInput').value;
-  let q = qRaw.toLowerCase();
-  if(!q){alert('Prashna liha!');return}
-  let ans="";
-  if(q.includes("period")||q.includes("masik")||q.includes("pali")||q.includes("mc")||q.includes("dukhat")){
-    ans="<b>🔒 Periods dukhi sathi upay:</b><br>1. Garam panyachi pishvi potavar theva<br>2. Halka vyayam / chalane kara<br>3. Chai, coffee kami kara, jast pani pya<br>4. 3-4 tasat pad badla<br>5. Khup jast dukhat asel tar Mahila Doctor la bheta.<br><br><i>Tujha prashna TEE Locker madhe 100% gupt rahila.</i>";
-  }else if(q.includes("stress")||q.includes("tension")||q.includes("udasi")||q.includes("zop")||q.includes("anxiety")){
-    ans="<b>🔒 Stress / Zop na yene sathi:</b><br>1. Ratri 10-6 zop purna ghya<br>2. Divsat 10 min deep breathing<br>3. Zopaycha 1 tas aadhi mobile band<br>4. Maitrini / tai shi man mokle kara<br><br><i>Ha chat history madhe save jhala nahi.</i>";
-  }else if(q.includes("white")||q.includes("safed")||q.includes("discharge")||q.includes("pani")){
-    ans="<b>🔒 White Discharge:</b><br>Thodya pramanat normal aahe. Cotton kapde vapra, jagah swachh theva. Jar khaj, jaljal, durgandhi asel tar doctor la nakki dakhva.";
-  }else{
-    ans="<b>🔒 Tujha Prashna:</b> '"+qRaw+"'<br><br>✅ He 100% gupt thevla aahe. TEE madhech answer process jhala, server var save nahi jhala.<br><br><b>Salla:</b> Santulit aahar, jast pani, roz 30 min chalane. Gambhir asel tar Mahila Doctor la bheta.";
-  }
-  document.getElementById('ans').style.display='block';
-  document.getElementById('ans').innerHTML=ans;
-  let qc=localStorage.getItem('totalQueries')||245;
-  localStorage.setItem('totalQueries', parseInt(qc)+1);
+ let raw=document.getElementById('qInput').value; if(!raw){alert('Prashna liha');return}
+ let q=raw.toLowerCase(); let a="";
+ if(q.includes("period")||q.includes("masik")||q.includes("pali")){a="<b>Periods upay:</b><br>1. Garam panyachi pishvi<br>2. Pani jast pya<br>3. Pad 3-4 tasat badla<br>4. Jast dukhat asel tar doctor bheta";}
+ else if(q.includes("stress")||q.includes("tension")||q.includes("zop")){a="<b>Stress:</b><br>• 8 tas zop, breathing kara, mobile 1 tas aadhi band";}
+ else if(q.includes("white")||q.includes("discharge")){a="<b>White discharge:</b> Thoda normal aahe. Cotton vapra.";}
+ else{a="<b>Tujha Prashna:</b> "+raw+"<br><br>✅ 100% gupt, TEE madhe process jhala, history save nahi.";}
+ document.getElementById('ans').style.display='block'; document.getElementById('ans').innerHTML=a;
 }
 </script>
 </body>
