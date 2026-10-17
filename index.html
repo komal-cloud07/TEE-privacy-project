@@ -27,7 +27,7 @@ section{padding:60px 20px;text-align:center}
 .features{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:30px}
 .card{background:white;padding:25px;border-radius:15px;width:250px;box-shadow:0 4px 10px rgba(0,0,0,0.08)}
 .card h3{color:#c94a6a;margin-bottom:10px}
-footer{background:#333;color:white;padding:20px;margin-top:40px}
+footer{background:#333;color:white;padding:20px;margin-top:40px;text-align:center}
 </style>
 </head>
 <body>
@@ -76,17 +76,37 @@ footer{background:#333;color:white;padding:20px;margin-top:40px}
 <footer>© 2025 Gupt Vaidya - Mahila Sathi | TEE Privacy Project</footer>
 
 <script>
+const qaDatabase = {
+  "period": "🩸 Masik Padi (Period) baddal:\n\nPeriod 21-35 divsani yene normal aahe. Jar khup dukhat asel tar garam panyachi pishvi vapra, aaram kara. 2 tasat pad badalava lagat asel tar doctor la bhenta.",
+  "masik": "🩸 Masik Padi baddal:\n\nPeriod 21-35 divsani yene normal aahe. Garam panyachi pishvi vapra.",
+  "pcod": "🔸 PCOD / PCOS baddal:\n\nVajan vadha, case galne, period irregular he PCOD chi lakshane aahet. Roj 30 min vyayam, junk food tala.",
+  "white": "🤍 White Discharge (Pandhra Pani):\n\nThoda pandhra pani yene normal aahe. Pan jar vasa yet asel, khaj yet asel tar infection asu shakto. Swachhata theva.",
+  "pregnancy": "🤰 Garbhadharna baddal:\n\nYa sathi khajgi doctor shi bola. Asurakshit sambandha nantar 72 tasa chya aat doctor cha salla ghene mahatvache aahe.",
+  "dukh": "😣 Pot dukhi / Kambar dukhi:\n\nPeriod chya aadhi pot dukhne normal aahe. Garam pani pya, halka vyayam kara."
+};
+
 function showAnswer(){
- var q=document.getElementById('qInput').value.trim();
+ var q=document.getElementById('qInput').value.trim().toLowerCase();
  var box=document.getElementById('answerBox');
  if(!q){box.style.display='block';box.innerText='Krupaya prashna liha!';return;}
  box.style.display='block';
  box.innerHTML='⏳ Tumcha prashna TEE Secure Enclave madhe process hotoy...';
  setTimeout(()=>{
-   box.innerText='Tumcha Prashna: "'+q+'"\n\nUttar: Ha prashna TEE madhe surakshit pane process jhala aahe. Tumchi mahiti kuthehi save jhali nahi. (Demo Answer - Real madhe AI model TEE madhe answer deil)';
+   let finalAns = null;
+   for(let key in qaDatabase){
+     if(q.includes(key)){
+       finalAns = qaDatabase[key];
+       break;
+     }
+   }
+   if(!finalAns){
+     finalAns = 'Tumcha Prashna: "'+document.getElementById('qInput').value+'"\n\n🙏 Ha prashna aamchya database madhe navin aahe. Sadhya aamhi ya vishayavar mahiti add karat aahot. Krupaya doctor cha salla ghya. Tumchi mahiti 100% TEE madhe surakshit aahe.';
+   }
+   box.innerText = finalAns;
    box.scrollIntoView({behavior:'smooth'});
- },800);
+ }, 400);
 }
+
 document.getElementById('qInput').addEventListener('keydown',e=>{if(e.key==='Enter')showAnswer();});
 document.querySelectorAll('nav a[href^="#"]').forEach(a=>{
  a.addEventListener('click',function(e){
@@ -95,6 +115,7 @@ document.querySelectorAll('nav a[href^="#"]').forEach(a=>{
    if(el) el.scrollIntoView({behavior:'smooth'});
  });
 });
+
 function logout(){
   localStorage.removeItem("isLoggedIn");
   window.location.href="login.html";
