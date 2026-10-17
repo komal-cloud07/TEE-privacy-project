@@ -3,118 +3,81 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gupt Vaidya - Mahila Aarogya Sathi</title>
- <script>
-// Login check - jar login nasel tar login pages var pathav
-if(localStorage.getItem("isLoggedIn") !== "true"){
-  window.location.href = "login.html";
-}
+<title>Gupt Vaidya - Mahila Sathi</title>
+<script>
+  if(localStorage.getItem("isLoggedIn") !== "true"){
+    window.location.href="login.html";
+  }
 </script>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#fff5f6;color:#333;scroll-behavior:smooth}
-nav{display:flex;justify-content:space-between;align-items:center;padding:15px 5%;background:#fff;position:sticky;top:0;z-index:999;box-shadow:0 2px 10px rgba(0,0,0,0.08)}
-.logo{font-weight:800;color:#c94a6a}
-nav ul{display:flex;gap:18px;list-style:none}
-nav ul li a{text-decoration:none;color:#444;font-weight:600;font-size:14px;cursor:pointer}
-nav ul li a:hover{color:#c94a6a}
-.hero{display:flex;flex-wrap:wrap;padding:40px 5%;background:linear-gradient(135deg,#ffe6ea,#ffd1d9)}
-.hero-left{flex:1.2;min-width:300px}
-.hero-right{flex:0.8;min-width:280px;display:flex;justify-content:center;align-items:center}
-.hero-right div{width:100%;max-width:420px;background:#fff;border-radius:20px;padding:10px;box-shadow:0 10px 30px rgba(201,74,106,0.2);text-align:center}
-.badge{background:#c94a6a;color:#fff;padding:6px 14px;border-radius:20px;font-size:12px;display:inline-block;margin-bottom:12px}
-h1{font-size:32px;color:#3a1a22;line-height:1.2}
-.subtitle{color:#666;margin:15px 0;font-size:14px;line-height:1.5}
-.stats{display:flex;gap:10px;margin-top:15px}
-.stat{background:#fff;padding:10px;border-radius:10px;flex:1;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.05);font-size:13px}
-.stat b{color:#c94a6a;display:block;font-size:14px}
-.qa-box{background:#fff;max-width:700px;margin:-20px auto 30px;padding:22px;border-radius:16px;box-shadow:0 10px 30px rgba(201,74,106,0.2);position:relative;z-index:10}
-.qa-box input{width:100%;padding:14px;border:2px solid #ffc2cc;border-radius:10px;margin:10px 0}
-.qa-box button{width:100%;padding:13px;background:#c94a6a;color:#fff;border:none;border-radius:10px;font-weight:700;cursor:pointer;font-size:15px}
-#answerBox{margin-top:15px;background:#fff5f6;border-left:5px solid #c94a6a;padding:14px;border-radius:8px;display:none;line-height:1.6}
-section{padding:50px 5%}
-section h2{text-align:center;color:#c94a6a;font-size:26px;margin-bottom:8px}
-.sub{text-align:center;color:#777;margin-bottom:28px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
-.card{background:#fff;padding:20px;border-radius:14px;box-shadow:0 4px 15px rgba(0,0,0,0.06);border-top:4px solid #c94a6a}
-footer{background:#3a1a22;color:#fff;text-align:center;padding:20px;font-size:13px}
+body{font-family:Arial;margin:0;background:#fff5f6}
+header{background:#c94a6a;color:white;padding:15px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:bold;font-size:20px}
+nav ul{list-style:none;display:flex;gap:15px;margin:0;padding:0}
+nav a{color:white;text-decoration:none;font-weight:bold}
+nav a.logout-btn{background:white;color:#c94a6a;padding:6px 12px;border-radius:15px}
+section{padding:30px;text-align:center}
+input{padding:10px;width:60%;border-radius:8px;border:1px solid #ffb6c1}
+button.ask{padding:10px 20px;background:#c94a6a;color:white;border:none;border-radius:20px;margin-left:10px;cursor:pointer}
+#answerBox{margin-top:20px;background:white;padding:15px;border-radius:10px;display:none;box-shadow:0 0 10px #ffc0cb;white-space:pre-wrap;text-align:left;max-width:600px;margin-left:auto;margin-right:auto}
 </style>
 </head>
 <body>
-<nav>
+<header>
 <div class="logo">Gupt Vaidya - Mahila Sathi</div>
+<nav>
 <ul>
 <li><a href="#home">Home</a></li>
-<li><a href="#features">Features</a></li>
-<li><a href="#privacy">Privacy</a></li>
-<li><a href="#howitworks">How It Works</a></li>
 <li><a href="#about">About</a></li>
+<li><a href="#features">Features</a></li>
 <li><a href="#contact">Contact</a></li>
+<li><a href="#" onclick="logout()" class="logout-btn">Logout</a></li>
 </ul>
 </nav>
+</header>
 
-<div class="hero" id="home">
-<div class="hero-left">
-<div class="badge">100% Gupt & Surakshit (Powered by TEE)</div>
-<h1>Gupt Vaidya - Mahila<br>Aarogya Sathi</h1>
-<p class="subtitle">Your trusted women's health companion that keeps your questions 100% private. No login history, no tracking.</p>
-<div class="stats">
-<div class="stat"><b>153 Logins</b>Active</div>
-<div class="stat"><b>87 Users</b>Registered</div>
-<div class="stat"><b>245 Queries</b>Secure</div>
-</div>
-</div>
-<div class="hero-right">
-<div>
-<img src="https://cdn-icons-png.flaticon.com/512/4320/4320337.png" style="width:120px;margin-bottom:10px">
-<p style="font-weight:700;color:#c94a6a">Private & Secure</p>
-<p style="font-size:13px;margin-top:5px">👩‍💻 Woman with Laptop<br>🔒 Health Records Protected<br>❤️ 100% Guptata</p>
-</div>
-</div>
-</div>
-
-<div class="qa-box">
-<h3 style="text-align:center;color:#c94a6a">Tuzha Prashna Ithach Rahil!</h3>
-<input type="text" id="qInput" placeholder="Tuzha Prashna Ithach Rahil... ex: periods problem">
-<button onclick="showAnswer()">Prashna Vichara & Answer Mile</button>
+<section id="home">
+<h2 style="color:#c94a6a">Tumcha Prashna Vichara</h2>
+<p>Guptatechi Hami - TEE Privacy Project</p>
+<br>
+<input type="text" id="qInput" placeholder="Tumcha prashna ithe liha...">
+<button class="ask" onclick="showAnswer()">Vichara</button>
 <div id="answerBox"></div>
-</div>
-
-<section id="features"><h2>Features</h2><p class="sub">Mahilansathi khas design</p><div class="grid"><div class="card"><h4>🔒 100% Guptata</h4><p>TEE madhe process - history save nahi.</p></div><div class="card"><h4>🤖 AI Vaidya</h4><p>Periods, PCOS, pregnancy - 24/7 Marathi uttare.</p></div><div class="card"><h4>⚡ Instant Answer</h4><p>Jithe prashna tithech khali answer disel.</p></div><div class="card"><h4>🌐 Marathi + English</h4><p>Tumchya bhashet vichara.</p></div></div></section>
-
-<section id="privacy" style="background:#fff0f2"><h2>Privacy</h2><p class="sub">TEE Technology</p><div class="grid"><div class="card"><h4>🛡️ TEE Powered</h4><p>Secure enclave - server admin suddha pahu shakat nahi.</p></div><div class="card"><h4>📵 No History Saved</h4><p>Chat, IP kahich save nahi.</p></div><div class="card"><h4>🔐 Encrypted</h4><p>Browser to TEE encryption.</p></div></div></section>
-
-<section id="howitworks"><h2>How It Works</h2><p class="sub">3 steps madhe gupt sallaa</p><div class="grid"><div class="card"><h4>Step 1: Prashna Liha</h4><p>Box madhe liha.</p></div><div class="card"><h4>Step 2: TEE Process</h4><p>Guptpane secure enclave madhe.</p></div><div class="card"><h4>Step 3: Lagech Answer</h4><p>Khali lagech disel.</p></div></div></section>
-
-<section id="about" style="background:#fff0f2"><h2>About</h2><p class="sub">Ka banavla?</p><div class="card" style="max-width:800px;margin:auto"><p>Maharashtra madhe mahilanna prashna vicharayla laj vatate. Mhanun TEE-privacy-project banavla - 100% gupt, verified uttar. Khara private AI solution.</p><br><p><b>Team:</b> komal-cloud07 | <b>Powered by:</b> TEE + Local AI</p></div></section>
-
-<section id="contact"><h2>Contact</h2><div style="text-align:center"><p>GitHub: komal-cloud07/TEE-privacy-project<br>Email: guptvaidya@secure.in</p></div></section>
-
-<footer>© 2026 Gupt Vaidya - Mahila Aarogya Sathi | 100% Private, Powered by TEE</footer>
+</section>
 
 <script>
 function showAnswer(){
- var q=document.getElementById('qInput').value.trim();
+ var q=document.getElementById('qInput').value;
  var box=document.getElementById('answerBox');
  if(!q){box.style.display='block';box.innerText='Krupaya prashna liha!';return;}
  box.style.display='block';
  box.innerHTML='⏳ Process hotoy TEE madhe...';
  setTimeout(function(){
-   var ans='Tumcha Prashna: "'+q+'"\n\nAnswer: Ha vishay samajla. Ha prashna TEE secure enclave madhe process jhala - 100% gupt.\nSalla: Pani jast, healthy diet, stress kami. Gambhir vatalyas lady doctor la bhetta.';
+   var ans='Tumcha Prashna: "'+q+'"\n\nAnswer: Ha data TEE (Trusted Execution Environment) madhe process zala aahe, tyamule tumchi mahiti 100% surakshit aahe.';
    box.innerText=ans;
    box.scrollIntoView({behavior:'smooth'});
  },600);
 }
-document.getElementById('qInput').addEventListener('keypress',function(e){if(e.key==='Enter') showAnswer();});
+
+document.getElementById('qInput').addEventListener('keydown',function(e){
+ if(e.key==='Enter'){showAnswer();}
+});
+
 document.querySelectorAll('nav a').forEach(a=>{
  a.addEventListener('click',function(e){
-   e.preventDefault();
-   var id=this.getAttribute('href').substring(1);
-   var el=document.getElementById(id);
-   if(el) el.scrollIntoView({behavior:'smooth'});
+   if(this.getAttribute('href').startsWith('#')){
+     e.preventDefault();
+     var id=this.getAttribute('href').substring(1);
+     var el=document.getElementById(id);
+     if(el) el.scrollIntoView({behavior:'smooth'});
+   }
  });
 });
+
+function logout(){
+  localStorage.removeItem("isLoggedIn");
+  window.location.href="login.html";
+}
 </script>
 </body>
 </html>
-
