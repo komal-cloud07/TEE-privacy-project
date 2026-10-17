@@ -10,16 +10,24 @@
   }
 </script>
 <style>
-body{font-family:Arial;margin:0;background:#fff5f6}
-header{background:#c94a6a;color:white;padding:15px;display:flex;justify-content:space-between;align-items:center}
-.logo{font-weight:bold;font-size:20px}
-nav ul{list-style:none;display:flex;gap:15px;margin:0;padding:0}
-nav a{color:white;text-decoration:none;font-weight:bold}
-nav a.logout-btn{background:white;color:#c94a6a;padding:6px 12px;border-radius:15px}
-section{padding:30px;text-align:center}
-input{padding:10px;width:60%;border-radius:8px;border:1px solid #ffb6c1}
-button.ask{padding:10px 20px;background:#c94a6a;color:white;border:none;border-radius:20px;margin-left:10px;cursor:pointer}
-#answerBox{margin-top:20px;background:white;padding:15px;border-radius:10px;display:none;box-shadow:0 0 10px #ffc0cb;white-space:pre-wrap;text-align:left;max-width:600px;margin-left:auto;margin-right:auto}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,Arial}
+body{background:#fff5f6;color:#333}
+header{background:#c94a6a;color:white;padding:15px 30px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
+.logo{font-weight:800;font-size:22px}
+nav ul{display:flex;list-style:none;gap:20px;align-items:center}
+nav a{color:white;text-decoration:none;font-weight:600}
+.logout-btn{background:white !important;color:#c94a6a !important;padding:7px 14px;border-radius:20px}
+section{padding:60px 20px;text-align:center}
+#home h2{color:#c94a6a;font-size:32px;margin-bottom:10px}
+#home p{color:#666;margin-bottom:20px}
+.input-area{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:20px}
+#qInput{padding:12px 15px;width:350px;border-radius:25px;border:2px solid #ffc0cb;outline:none}
+.ask-btn{padding:12px 25px;background:#c94a6a;color:white;border:none;border-radius:25px;cursor:pointer;font-weight:bold}
+#answerBox{margin:25px auto 0 auto;background:white;padding:20px;border-radius:15px;display:none;box-shadow:0 4px 15px rgba(201,74,106,0.2);max-width:650px;text-align:left;white-space:pre-wrap;line-height:1.6}
+.features{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.card{background:white;padding:25px;border-radius:15px;width:250px;box-shadow:0 4px 10px rgba(0,0,0,0.08)}
+.card h3{color:#c94a6a;margin-bottom:10px}
+footer{background:#333;color:white;padding:20px;margin-top:40px}
 </style>
 </head>
 <body>
@@ -37,43 +45,56 @@ button.ask{padding:10px 20px;background:#c94a6a;color:white;border:none;border-r
 </header>
 
 <section id="home">
-<h2 style="color:#c94a6a">Tumcha Prashna Vichara</h2>
+<h2>Tumcha Prashna Vichara</h2>
 <p>Guptatechi Hami - TEE Privacy Project</p>
-<br>
+<div class="input-area">
 <input type="text" id="qInput" placeholder="Tumcha prashna ithe liha...">
-<button class="ask" onclick="showAnswer()">Vichara</button>
+<button class="ask-btn" onclick="showAnswer()">Vichara</button>
+</div>
 <div id="answerBox"></div>
 </section>
 
+<section id="about">
+<h2 style="color:#c94a6a;">About Us</h2>
+<p style="max-width:600px;margin:20px auto;">Ha project mahilansathi banavla aahe jithe tya tyanchya aarogya vishayak prashna guptapane vicharu shaktat. TEE technology mule tumcha data 100% surakshit rahato.</p>
+</section>
+
+<section id="features">
+<h2 style="color:#c94a6a;">Features</h2>
+<div class="features">
+<div class="card"><h3>🔒 100% Private</h3><p>Tumcha prashna konalach disat nahi</p></div>
+<div class="card"><h3>🛡️ TEE Security</h3><p>Trusted Execution Environment madhe process</p></div>
+<div class="card"><h3>🌸 Mahila Sathi</h3><p>Marathi madhe samajnyasarkhe uttar</p></div>
+</div>
+</section>
+
+<section id="contact">
+<h2 style="color:#c94a6a;">Contact</h2>
+<p>Email: support@guptvaidya.com</p>
+</section>
+
+<footer>© 2025 Gupt Vaidya - Mahila Sathi | TEE Privacy Project</footer>
+
 <script>
 function showAnswer(){
- var q=document.getElementById('qInput').value;
+ var q=document.getElementById('qInput').value.trim();
  var box=document.getElementById('answerBox');
  if(!q){box.style.display='block';box.innerText='Krupaya prashna liha!';return;}
  box.style.display='block';
- box.innerHTML='⏳ Process hotoy TEE madhe...';
- setTimeout(function(){
-   var ans='Tumcha Prashna: "'+q+'"\n\nAnswer: Ha data TEE (Trusted Execution Environment) madhe process zala aahe, tyamule tumchi mahiti 100% surakshit aahe.';
-   box.innerText=ans;
+ box.innerHTML='⏳ Tumcha prashna TEE Secure Enclave madhe process hotoy...';
+ setTimeout(()=>{
+   box.innerText='Tumcha Prashna: "'+q+'"\n\nUttar: Ha prashna TEE madhe surakshit pane process jhala aahe. Tumchi mahiti kuthehi save jhali nahi. (Demo Answer - Real madhe AI model TEE madhe answer deil)';
    box.scrollIntoView({behavior:'smooth'});
- },600);
+ },800);
 }
-
-document.getElementById('qInput').addEventListener('keydown',function(e){
- if(e.key==='Enter'){showAnswer();}
-});
-
-document.querySelectorAll('nav a').forEach(a=>{
+document.getElementById('qInput').addEventListener('keydown',e=>{if(e.key==='Enter')showAnswer();});
+document.querySelectorAll('nav a[href^="#"]').forEach(a=>{
  a.addEventListener('click',function(e){
-   if(this.getAttribute('href').startsWith('#')){
-     e.preventDefault();
-     var id=this.getAttribute('href').substring(1);
-     var el=document.getElementById(id);
-     if(el) el.scrollIntoView({behavior:'smooth'});
-   }
+   e.preventDefault();
+   var el=document.getElementById(this.getAttribute('href').substring(1));
+   if(el) el.scrollIntoView({behavior:'smooth'});
  });
 });
-
 function logout(){
   localStorage.removeItem("isLoggedIn");
   window.location.href="login.html";
