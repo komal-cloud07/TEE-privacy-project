@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gupt Vaidya - Mahila Aarogya Sathi</title>
+ <script>
+// Login check - jar login nasel tar login pages var pathav
+if(localStorage.getItem("isLoggedIn") !== "true"){
+  window.location.href = "login.html";
+}
+</script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
 body{background:#fff5f6;color:#333;scroll-behavior:smooth}
